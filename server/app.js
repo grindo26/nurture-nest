@@ -9,7 +9,13 @@ const static = express.static(__dirname + "/public");
 app.use("/public", static);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+    cors({
+        origin: "https://nurture-nest.vercel.app",
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+);
 app.use(
     session({
         name: "AuthCookie",
@@ -33,7 +39,7 @@ const http = require("http").Server(app);
 
 const socketIO = require("socket.io")(http, {
     cors: {
-        origin: "http://localhost:8081",
+        origin: "https://nurture-nest.vercel.app",
     },
 });
 
@@ -60,7 +66,7 @@ socketIO.on("connection", (socket) => {
 });
 
 configRoutes(app);
-
-http.listen(3000, () => {
-    console.log(`listening on *:${3000}`);
+const PORT = process.env.PORT || 3000;
+http.listen(PORT, () => {
+    console.log(`listening on *:${PORT}`);
 });
