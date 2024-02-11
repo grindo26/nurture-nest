@@ -25,7 +25,7 @@ import UploadImage from "./UploadImage";
 import socketIO from "socket.io-client";
 import SetProfile from "./SetProfile";
 
-const socket = socketIO.connect("http://localhost:3000");
+const socket = socketIO.connect("https://nurture-nest-backend.vercel.app/");
 
 const Main = ({ userData }) => {
     const { currentUser } = useContext(AuthContext);

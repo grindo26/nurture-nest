@@ -100,7 +100,7 @@ const Profile = ({ userData, setUserProfileAPICall, updateUserAPICall, updatePro
             formData.append("image", imageFile);
 
             await updateProfileImageAPICall(userId, formData);
-            // const response = await axios.put("http://localhost:3000/users/image", formData);
+            // const response = await axios.put("https://nurture-nest-backend.vercel.app/users/image", formData);
             setDisableSave(false);
         } catch (error) {
             console.error(error);
