@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const session = require("express-session");
-const configRoutes = require("../routes");
+const configRoutes = require("./routes");
 require("dotenv").config();
 
 const static = express.static(__dirname + "/public");
