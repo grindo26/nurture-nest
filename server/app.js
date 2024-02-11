@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const session = require("express-session");
 const configRoutes = require("./routes");
+require("dotenv").config();
 
 const static = express.static(__dirname + "/public");
 
@@ -11,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     cors({
-        origin: "https://nurture-nest.vercel.app",
+        origin: ["*", "https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     })
@@ -35,11 +36,17 @@ global.userTypeChild = "CHILD";
 const ctrReq = {};
 let users = [];
 
+configRoutes(app);
+const PORT = process.env.PORT || 3000;
 const http = require("http").Server(app);
+http.listen(PORT, () => {
+    console.log(`listening on *:${PORT}`);
+});
 
 const socketIO = require("socket.io")(http, {
     cors: {
-        origin: "https://nurture-nest.vercel.app",
+        origin: ["*", "https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
+        credentials: true,
     },
 });
 
@@ -63,10 +70,4 @@ socketIO.on("connection", (socket) => {
         socketIO.emit("newUserResponse", users);
         socket.disconnect();
     });
-});
-
-configRoutes(app);
-const PORT = process.env.PORT || 3000;
-http.listen(PORT, () => {
-    console.log(`listening on *:${PORT}`);
 });
