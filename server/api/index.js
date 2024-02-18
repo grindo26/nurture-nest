@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const session = require("express-session");
-const configRoutes = require("../routes");
+const configRoutes = require("./routes");
 require("dotenv").config();
 
 const static = express.static(__dirname + "/public");
@@ -10,7 +10,14 @@ const static = express.static(__dirname + "/public");
 app.use("/public", static);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+    cors({
+        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"], // Specify allowed origins
+        credentials: true, // Allows credentials such as cookies to be sent with requests
+        methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
+        allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+    })
+);
 app.use(
     session({
         name: "AuthCookie",
@@ -39,7 +46,7 @@ http.listen(PORT, () => {
 
 const socketIO = require("socket.io")(http, {
     cors: {
-        origin: ["*", "https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
+        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
         credentials: true,
     },
 });
