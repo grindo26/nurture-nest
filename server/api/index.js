@@ -12,7 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     cors({
-        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"], // Specify allowed origins
+        origin: [
+            "https://nurture-nest.vercel.app",
+            "https://nurture-nest-backend.vercel.app",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/GzSznHkRpc5dgvKYoeyAtd2EpRfy",
+            "*",
+        ], // Specify allowed origins
         credentials: true, // Allows credentials such as cookies to be sent with requests
         methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
         allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
@@ -39,14 +45,20 @@ let users = [];
 
 configRoutes(app);
 const PORT = process.env.PORT || 3000;
-const http = require("http").Server(app);
-http.listen(PORT, () => {
+
+const server = app.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
 });
 
-const socketIO = require("socket.io")(http, {
+const socketIO = require("socket.io")(server, {
     cors: {
-        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
+        origin: [
+            "*",
+            "https://nurture-nest.vercel.app",
+            "https://nurture-nest-backend.vercel.app",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/GzSznHkRpc5dgvKYoeyAtd2EpRfy",
+        ],
         credentials: true,
     },
 });

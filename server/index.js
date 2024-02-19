@@ -16,6 +16,7 @@ app.use(
             "https://nurture-nest.vercel.app",
             "https://nurture-nest-backend.vercel.app",
             "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/GzSznHkRpc5dgvKYoeyAtd2EpRfy",
             "*",
         ], // Specify allowed origins
         credentials: true, // Allows credentials such as cookies to be sent with requests
@@ -56,6 +57,7 @@ const socketIO = require("socket.io")(server, {
             "https://nurture-nest.vercel.app",
             "https://nurture-nest-backend.vercel.app",
             "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/GzSznHkRpc5dgvKYoeyAtd2EpRfy",
         ],
         credentials: true,
     },
