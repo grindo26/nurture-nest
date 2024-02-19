@@ -39,14 +39,19 @@ let users = [];
 
 configRoutes(app);
 const PORT = process.env.PORT || 3000;
-const http = require("http").Server(app);
-http.listen(PORT, () => {
+
+const server = app.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
 });
 
-const socketIO = require("socket.io")(http, {
+const socketIO = require("socket.io")(server, {
     cors: {
-        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"],
+        origin: [
+            "*",
+            "https://nurture-nest.vercel.app",
+            "https://nurture-nest-backend.vercel.app",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+        ],
         credentials: true,
     },
 });
