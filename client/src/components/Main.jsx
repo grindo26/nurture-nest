@@ -26,14 +26,13 @@ import socketIO from "socket.io-client";
 import SetProfile from "./SetProfile";
 
 const Main = ({ userData }) => {
+    const { currentUser } = useContext(AuthContext);
     useEffect(() => {
         if (currentUser) {
             const socket = socketIO.connect("https://nurture-nest-backend.vercel.app/");
             socket.emit("newUser", { userName: userData?.data?.firstName, socketID: socket?.id });
         }
     }, [currentUser]);
-
-    const { currentUser } = useContext(AuthContext);
 
     return (
         <div className="App">
