@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
 import { AuthContext } from "../firebase/Auth";
@@ -27,12 +27,15 @@ import SetProfile from "./SetProfile";
 
 const Main = ({ userData }) => {
     const { currentUser } = useContext(AuthContext);
+    const socket = useRef(null); // Use useRef to persist socket connection
+
     useEffect(() => {
-        if (currentUser) {
-            const socket = socketIO.connect("https://nurture-nest-backend.vercel.app/");
-            socket.emit("newUser", { userName: userData?.data?.firstName, socketID: socket?.id });
+        if (currentUser && !socket.current) {
+            // Initialize socket connection once
+            socket.current = socketIO.connect("https://nurture-nest-backend.vercel.app/");
+            socket.current.emit("newUser", { userName: userData?.data?.firstName, socketID: socket.current.id });
         }
-    }, [currentUser]);
+    }, [currentUser, userData]);
 
     return (
         <div className="App">
