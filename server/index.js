@@ -12,7 +12,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
     cors({
-        origin: ["https://nurture-nest.vercel.app", "https://nurture-nest-backend.vercel.app"], // Specify allowed origins
+        origin: [
+            "https://nurture-nest.vercel.app",
+            "https://nurture-nest-backend.vercel.app",
+            "https://vercel.com/pratiks-projects-b162ceac/nurture-nest/6jzNNHNqWLUTb1EHGNQPDSpp5zQJ",
+            "*",
+        ], // Specify allowed origins
         credentials: true, // Allows credentials such as cookies to be sent with requests
         methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed HTTP methods
         allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
