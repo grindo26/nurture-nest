@@ -18,7 +18,7 @@ export const gethomeFailure = (error) => {
 export const gethomeAPICall = (id) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/users/${id}`);
+            let resp = await axios.get(`http://54.167.82.222:80users/${id}`);
             dispatch(gethomeSuccess(resp?.data));
         } catch (error) {
             dispatch(gethomeFailure(error));

@@ -79,7 +79,7 @@ export const userRegistrationAPICall = (obj) => {
             dispatch(userInitiate());
 
             dispatch(userIdStore(obj.uuid));
-            let resp = await axios.post("https://nurture-nest-backend.vercel.app/users/signup", obj);
+            let resp = await axios.post("http://54.167.82.222:80users/signup", obj);
             dispatch(userRegisterSuccess(resp?.data));
             dispatch(setProfileSuccess(resp?.data));
         } catch (error) {
@@ -97,7 +97,7 @@ export const userLoginAPICall = (uuId, email, firstName, lastName) => {
                 firstName: firstName,
                 lastName: lastName,
             };
-            let resp = await axios.post(`https://nurture-nest-backend.vercel.app/users/signin/${uuId}`, obj);
+            let resp = await axios.post(`http://54.167.82.222:80users/signin/${uuId}`, obj);
             dispatch(userLoginSuccess(resp?.data));
             dispatch(setProfileSuccess(resp?.data));
         } catch (error) {
@@ -109,7 +109,7 @@ export const userLoginAPICall = (uuId, email, firstName, lastName) => {
 export const setUserProfileAPICall = (id) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.get(`https://nurture-nest-backend.vercel.app/users/${id}`);
+            let { data } = await axios.get(`http://54.167.82.222:80users/${id}`);
             dispatch(setProfileSuccess(data));
         } catch (error) {
             dispatch(setProfileFailure(error));
@@ -120,7 +120,7 @@ export const setUserProfileAPICall = (id) => {
 export const updateUserAPICall = (id, obj) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.patch(`https://nurture-nest-backend.vercel.app/users/${id}`, obj);
+            let { data } = await axios.patch(`http://54.167.82.222:80users/${id}`, obj);
             dispatch(setProfileSuccess(data));
         } catch (error) {
             dispatch(setProfileFailure(error));
@@ -130,7 +130,7 @@ export const updateUserAPICall = (id, obj) => {
 export const updateProfileImageAPICall = (id, formData) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.put(`https://nurture-nest-backend.vercel.app/users/image/${id}`, formData);
+            let { data } = await axios.put(`http://54.167.82.222:80users/image/${id}`, formData);
             dispatch(setProfileSuccess(data));
         } catch (error) {
             dispatch(setProfileFailure(error));

@@ -32,7 +32,7 @@ const Main = ({ userData }) => {
     useEffect(() => {
         if (currentUser && !socket.current) {
             // Initialize socket connection once
-            socket.current = socketIO.connect("https://nurture-nest-backend.vercel.app/");
+            socket.current = socketIO.connect("http://54.167.82.222:80");
             socket.current.emit("newUser", { userName: userData?.data?.firstName, socketID: socket.current.id });
         }
     }, [currentUser, userData]);

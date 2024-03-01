@@ -6,7 +6,7 @@ async function postImage({ image, description }) {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("description", description);
-    const result = await axios.post("https://nurture-nest-backend.vercel.app/nanny/images", formData, { headers: { "Content-Type": "multipart/" } });
+    const result = await axios.post("http://54.167.82.222:80nanny/images", formData, { headers: { "Content-Type": "multipart/" } });
     return result.data;
 }
 

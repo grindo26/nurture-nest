@@ -20,7 +20,7 @@ export const getNannyDetailsAPICall = (nannyId, childId) => {
         try {
             // THIS NEEDS TO BE REFACTORED
             // CHECK WHAT HAPPENS IN SUCCESS SCENARIO - RUKHSAR
-            let { data } = await axios.get(`https://nurture-nest-backend.vercel.app/nanny/` + nannyId);
+            let { data } = await axios.get(`http://54.167.82.222:80nanny/` + nannyId);
             dispatch(getNannyDetailsSuccess(data));
         } catch (error) {
             dispatch(getNannyDetailsFailure(error));

@@ -60,7 +60,7 @@ export const appointmentDeleteFailure = (error) => {
 export const getAppointmentAPICall = (childId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get("https://nurture-nest-backend.vercel.app/child/appointment/" + childId);
+            let resp = await axios.get("http://54.167.82.222:80child/appointment/" + childId);
             dispatch(getAppointmentSuccess(resp?.data));
         } catch (error) {
             dispatch(getAppointmentFailure(error));
@@ -72,7 +72,7 @@ export const appointmentSetAPICall = (obj, childId) => {
     return async (dispatch) => {
         try {
             dispatch(appointmentSetTrigger());
-            let resp = await axios.post("https://nurture-nest-backend.vercel.app/child/appointment/" + childId, obj);
+            let resp = await axios.post("http://54.167.82.222:80child/appointment/" + childId, obj);
             dispatch(appointmentSetSuccess(resp?.data));
         } catch (error) {
             dispatch(appointmentSetFailure(error));
@@ -84,7 +84,7 @@ export const delAppointmentAPICall = (appointmentId) => {
     return async (dispatch) => {
         try {
             dispatch(appointmentSetTrigger());
-            let resp = await axios.delete("https://nurture-nest-backend.vercel.app/child/appointment/" + appointmentId);
+            let resp = await axios.delete("http://54.167.82.222:80child/appointment/" + appointmentId);
             dispatch(appointmentDeleteSuccess(resp?.data));
         } catch (error) {
             dispatch(appointmentDeleteFailure(error));

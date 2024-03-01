@@ -27,7 +27,7 @@ export const setChildFailure = (error) => {
 export const createChildAPICall = (obj) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.post(`https://nurture-nest-backend.vercel.app/child`, obj);
+            let { data } = await axios.post(`http://54.167.82.222:80child`, obj);
             dispatch(setChildSuccess(data));
         } catch (error) {
             dispatch(setChildFailure(error));
@@ -52,7 +52,7 @@ export const setFetchChildFailure = (error) => {
 export const fetchChildrenAPICall = (userId) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.get(`https://nurture-nest-backend.vercel.app/users/children/${userId}`);
+            let { data } = await axios.get(`http://54.167.82.222:80users/children/${userId}`);
             dispatch(setFetchChildSuccess(data));
         } catch (error) {
             dispatch(setFetchChildFailure(error));
@@ -77,7 +77,7 @@ export const deleteChildFailure = (error) => {
 export const deleteChilDAPICall = (childId, obj) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.delete("https://nurture-nest-backend.vercel.app/child/removeChild/" + childId, { data: obj });
+            let { data } = await axios.delete("http://54.167.82.222:80child/removeChild/" + childId, { data: obj });
             dispatch(deleteChildSuccess(data));
         } catch (error) {
             dispatch(deleteChildFailure(error));

@@ -60,7 +60,7 @@ export const mealDeleteFailure = (error) => {
 export const getMealPlanAPICall = (childId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/child/mealplan/${childId}`);
+            let resp = await axios.get(`http://54.167.82.222:80child/mealplan/${childId}`);
             // set token here
             // sessionStorage.setItem("token", resp.data.token);
             dispatch(getMealPlanSuccess(resp?.data));
@@ -74,7 +74,7 @@ export const mealPlanSetAPICall = (obj, childId) => {
     return async (dispatch) => {
         try {
             dispatch(mealSetTrigger());
-            let resp = await axios.post("https://nurture-nest-backend.vercel.app/child/mealplan/" + childId, obj);
+            let resp = await axios.post("http://54.167.82.222:80child/mealplan/" + childId, obj);
             // set token here
             // sessionStorage.setItem("token", resp.data.token);
             dispatch(mealPlanSetSuccess(resp?.data));
@@ -88,7 +88,7 @@ export const delMealAPICall = (mealId) => {
     return async (dispatch) => {
         try {
             dispatch(mealSetTrigger());
-            let resp = await axios.delete("https://nurture-nest-backend.vercel.app/child/mealplan/" + mealId);
+            let resp = await axios.delete("http://54.167.82.222:80child/mealplan/" + mealId);
             // set token here
             // sessionStorage.setItem("token", resp.data.token);
             dispatch(mealDeleteSuccess(resp?.data));

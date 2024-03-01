@@ -60,7 +60,7 @@ export const vaccinesDeleteFailure = (error) => {
 export const getVaccineAPICall = (childId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get("https://nurture-nest-backend.vercel.app/child/vaccine/" + childId);
+            let resp = await axios.get("http://54.167.82.222:80child/vaccine/" + childId);
             dispatch(getVaccinesSuccess(resp?.data));
         } catch (error) {
             dispatch(getVaccinesFailure(error));
@@ -72,7 +72,7 @@ export const vaccineSetAPICall = (obj, childId) => {
     return async (dispatch) => {
         try {
             dispatch(vaccinesSetTrigger());
-            let resp = await axios.post("https://nurture-nest-backend.vercel.app/child/vaccine/" + childId, obj);
+            let resp = await axios.post("http://54.167.82.222:80child/vaccine/" + childId, obj);
             dispatch(vaccinesSetSuccess(resp?.data));
         } catch (error) {
             dispatch(vaccinesSetFailure(error));
@@ -84,7 +84,7 @@ export const delVaccineAPICall = (vaccineId) => {
     return async (dispatch) => {
         try {
             dispatch(vaccinesSetTrigger());
-            let resp = await axios.delete("https://nurture-nest-backend.vercel.app/child/vaccine/" + vaccineId);
+            let resp = await axios.delete("http://54.167.82.222:80child/vaccine/" + vaccineId);
             dispatch(vaccineDeleteSuccess(resp?.data));
         } catch (error) {
             dispatch(vaccinesDeleteFailure(error));

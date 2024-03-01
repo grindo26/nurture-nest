@@ -204,7 +204,7 @@ export const fireNannyFailure = (error) => {
 export const createJobAPICall = (obj, parentId, childId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.post(`https://nurture-nest-backend.vercel.app/job/createJob/${parentId}/${childId}`, obj);
+            let resp = await axios.post(`http://54.167.82.222:80job/createJob/${parentId}/${childId}`, obj);
             dispatch(createJobSuccess(resp.data));
         } catch (error) {
             dispatch(createJobFailure(error));
@@ -215,7 +215,7 @@ export const createJobAPICall = (obj, parentId, childId) => {
 export const deleteJobAPICall = (jobId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.delete(`https://nurture-nest-backend.vercel.app/job/${jobId}`);
+            let resp = await axios.delete(`http://54.167.82.222:80job/${jobId}`);
             dispatch(deleteJobSuccess(resp.data));
         } catch (error) {
             dispatch(deleteJobFailure(error));
@@ -226,7 +226,7 @@ export const deleteJobAPICall = (jobId) => {
 export const showAllApplicantsAPICall = (jobId, pageNum) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/allApplicants/${jobId}/${pageNum}`);
+            let resp = await axios.get(`http://54.167.82.222:80job/allApplicants/${jobId}/${pageNum}`);
             dispatch(showAllApplicantsSuccess(resp.data));
         } catch (error) {
             dispatch(showAllApplicantsFailure(error));
@@ -238,7 +238,7 @@ export const searchApplicantsAPICall = (jobId, searchTerm, pageNum) => {
     return async (dispatch) => {
         try {
             dispatch(searchInitiate());
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/searchApplicants/${jobId}/${searchTerm}/${pageNum}`);
+            let resp = await axios.get(`http://54.167.82.222:80job/searchApplicants/${jobId}/${searchTerm}/${pageNum}`);
             dispatch(searchApplicantsSuccess(resp.data));
         } catch (error) {
             dispatch(searchApplicantsFailure(error));
@@ -249,7 +249,7 @@ export const searchApplicantsAPICall = (jobId, searchTerm, pageNum) => {
 export const selectNannyAPICall = (jobId, nannyId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.post(`https://nurture-nest-backend.vercel.app/job/setNanny/${jobId}/${nannyId}`);
+            let resp = await axios.post(`http://54.167.82.222:80job/setNanny/${jobId}/${nannyId}`);
             dispatch(selectNannySuccess(resp.data));
         } catch (error) {
             dispatch(selectNannyFailure(error));
@@ -260,7 +260,7 @@ export const selectNannyAPICall = (jobId, nannyId) => {
 export const getMyJobAPICall = (jobId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/${jobId}`);
+            let resp = await axios.get(`http://54.167.82.222:80job/${jobId}`);
             dispatch(getMyJobSuccess(resp.data));
         } catch (error) {
             dispatch(getMyJobFailure(error));
@@ -271,7 +271,7 @@ export const getMyJobAPICall = (jobId) => {
 export const getallJobsAPICall = (nannyId, pageNum) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/getJobs/AllJobs/${nannyId}/${pageNum}`);
+            let resp = await axios.get(`http://54.167.82.222:80job/getJobs/AllJobs/${nannyId}/${pageNum}`);
             dispatch(getAllJobsSuccess(resp.data));
         } catch (error) {
             dispatch(getAllJobsFailure(error));
@@ -282,7 +282,7 @@ export const getallJobsAPICall = (nannyId, pageNum) => {
 export const searchJobsAPICall = (nannyId, searchTerm, pageNum) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/searchJobs/${nannyId}/${searchTerm}/${pageNum}`);
+            let resp = await axios.get(`http://54.167.82.222:80job/searchJobs/${nannyId}/${searchTerm}/${pageNum}`);
             dispatch(searchJobsSuccess(resp.data));
         } catch (error) {
             dispatch(searchJobsFailure(error));
@@ -293,7 +293,7 @@ export const searchJobsAPICall = (nannyId, searchTerm, pageNum) => {
 export const applyToJobAPICall = (obj, nannyId, jobId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.put(`https://nurture-nest-backend.vercel.app/job/apply/${jobId}/${nannyId}`, obj);
+            let resp = await axios.put(`http://54.167.82.222:80job/apply/${jobId}/${nannyId}`, obj);
             dispatch(applyToJobSuccess(resp.data));
         } catch (error) {
             dispatch(applyToJobFailure(error));
@@ -304,7 +304,7 @@ export const applyToJobAPICall = (obj, nannyId, jobId) => {
 export const getAllMyAppliedJobsAPICall = () => {
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/job/`);
+            let resp = await axios.get(`http://54.167.82.222:80job/`);
             dispatch(viewAllMyAppliedJobsSuccess(resp.data));
         } catch (error) {
             dispatch(viewAllMyAppliedJobsFailure(error));
@@ -315,7 +315,7 @@ export const getAllMyAppliedJobsAPICall = () => {
 export const exitJobAPICall = (jobId) => {
     return async (dispatch) => {
         try {
-            let resp = await axios.delete(`https://nurture-nest-backend.vercel.app/job/`);
+            let resp = await axios.delete(`http://54.167.82.222:80job/`);
             dispatch(deleteJobSuccess(resp.data));
         } catch (error) {
             dispatch(deleteJobFailure(error));
@@ -326,7 +326,7 @@ export const exitJobAPICall = (jobId) => {
 export const fireNannyAPICall = (childId, nannyId) => {
     return async (dispatch) => {
         try {
-            let { data } = await axios.delete("https://nurture-nest-backend.vercel.app/job/fireNanny/" + childId, { data: { nannyId } });
+            let { data } = await axios.delete("http://54.167.82.222:80job/fireNanny/" + childId, { data: { nannyId } });
 
             dispatch(fireNannySuccess(data));
         } catch (error) {

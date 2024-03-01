@@ -34,7 +34,7 @@ export const getDashboardAPICall = (childId) => {
 
     return async (dispatch) => {
         try {
-            let resp = await axios.get(`https://nurture-nest-backend.vercel.app/child/${childId}`);
+            let resp = await axios.get(`http://54.167.82.222:80child/${childId}`);
 
             let newObj = {
                 _id: resp?.data?._id,
@@ -55,9 +55,9 @@ export const getDashboardAPICall = (childId) => {
             let resp3 = null;
 
             if (resp.data.jobId) {
-                resp2 = await axios.get(`https://nurture-nest-backend.vercel.app/job/findjob/${childId}`);
+                resp2 = await axios.get(`http://54.167.82.222:80job/findjob/${childId}`);
                 nannyId = resp2?.data?.nannyId;
-                resp3 = await axios.get(`https://nurture-nest-backend.vercel.app/users/` + nannyId);
+                resp3 = await axios.get(`http://54.167.82.222:80users/` + nannyId);
             }
 
             // if (resp?.data?.jobId) {
